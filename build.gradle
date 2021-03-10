@@ -25,15 +25,23 @@ test {
     useJUnitPlatform()
 }
 
-task release(dependsOn: [clean, jar]) {
-    doLast {
-        copy {
-            into("$buildDir/libs")
-            from(configurations.runtimeClasspath)
+tasks {
+    jar {
+        enabled = true
+        manifest {
+            attributes["Main-Class"] = "todolist.MainKt"
         }
-        copy {
-            from("../todolist-frontend/build")
-            into("$buildDir/libs/www")
+    }
+    task release(dependsOn: [clean, jar]) {
+        doLast {
+            copy {
+                into("$buildDir/libs")
+                from(configurations.runtimeClasspath)
+            }
+            copy {
+                from("../todolist-frontend/build")
+                into("$buildDir/libs/www")
+            }
         }
     }
 }
