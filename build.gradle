@@ -25,10 +25,6 @@ test {
     useJUnitPlatform()
 }
 
-application {
-    mainClass = 'todolist.MainKt'
-}
-
 tasks {
     jar {
         enabled = true
