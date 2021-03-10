@@ -25,18 +25,15 @@ test {
     useJUnitPlatform()
 }
 
-tasks {
-    jar {
-        enabled = true
-        manifest {
-            attributes["Main-Class"] = "todolist.MainKt"
-        }
+tasks.jar {
+    enabled = true
+    manifest {
+        attributes["Main-Class"] = "todolist.MainKt"
     }
+}
+
+tasks {
     task release(dependsOn: [clean, jar]) {
-        enabled = true
-        manifest {
-            attributes["Main-Class"] = "todolist.MainKt"
-        }
         doLast {
             copy {
                 into("$buildDir/libs")
