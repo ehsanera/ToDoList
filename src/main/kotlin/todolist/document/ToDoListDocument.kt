@@ -11,23 +11,27 @@ class ToDoListDocument(
     @Id
     var id: String?,
     val title: String,
-    val checked: Boolean
+    val checked: Boolean,
+    val ownerId: Int
 ) {
     fun toDto() = ToDoListDto(
         id!!,
         title,
-        checked
+        checked,
+        ownerId
     )
 }
 
 fun ToDoListCreateDto.to() = ToDoListDocument(
     null,
     title,
-    checked
+    checked,
+    ownerId
 )
 
 fun ToDoListUpdateDto.to(current: ToDoListDocument) = ToDoListDocument(
     current.id,
     title ?: current.title,
     checked ?: current.checked,
+    current.ownerId
 )
