@@ -1,8 +1,11 @@
 name: Docker Image CI
 
+# Only trigger, when the build workflow succeeded
 on:
-  push:
-    branches: [ main ]
+  workflow_run:
+    workflows: ["Java CI with Gradle"]
+    types:
+      - completed
 
 jobs:
 
