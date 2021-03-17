@@ -9,6 +9,15 @@ plugins {
 group 'ehsan.todolist'
 version '1.0.0'
 
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+
+springBoot {
+    mainClassName = 'todolist.App'
+}
+
 repositories {
     mavenCentral()
 }
